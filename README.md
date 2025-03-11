@@ -59,3 +59,60 @@ Endpoint for user registration. It accepts user details and returns a JWT token 
   }
 }
 ```
+
+## /users/login Endpoint Documentation
+
+### Description
+Endpoint for user login. It accepts user credentials and returns a JWT token along with the user details.
+
+### Request
+- **Method:** POST
+- **URL:** /users/login
+- **Content-Type:** application/json
+
+#### Request Body
+```json
+{
+  "email": "string, required, valid email format",
+  "password": "string, required (min 6 characters)"
+}
+```
+
+### Responses
+
+#### Success (200)
+```json
+{
+  "token": "JWT token string",
+  "user": { /* user details */ }
+}
+```
+
+#### Error (400 / 401)
+```json
+{
+  "errors": [
+    {
+      "msg": "Error message",
+      "param": "field name",
+      "location": "body"
+    }
+  ]
+}
+```
+
+### Example Response
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "user": {
+    "id": "60ed3c8ecf1e4b0017903a2c",
+    "fullname": {
+      "firstname": "Jane",
+      "lastname": "Doe"
+    },
+    "email": "jane.doe@example.com"
+    // ... other fields ...
+  }
+}
+```
