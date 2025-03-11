@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 function connectToDb() {
   mongoose
-    .connect(process.env.DATABASE_URL)
+    .connect(`${process.env.DATABASE_URL}/uber`)
     .then(() => {
       console.log("Connected to database");
     })
