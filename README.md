@@ -116,3 +116,54 @@ Endpoint for user login. It accepts user credentials and returns a JWT token alo
   }
 }
 ```
+
+## /captain/register Endpoint Documentation
+
+### Description
+Endpoint for captain registration. It accepts captain details and returns a JWT token along with the created captain.
+
+### Request
+- **Method:** POST
+- **URL:** /captain/register
+- **Content-Type:** application/json
+
+#### Request Body
+```json
+{
+  "fullname": {
+    "firstname": "string, required (min 3 characters)",
+    "lastname": "string, optional (min 3 characters if provided)"
+  },
+  "email": "string, required, valid email format",
+  "password": "string, required (min 6 characters)",
+  "vehicle": {
+    "color": "string, required (min 3 characters)",
+    "plate": "string, required (min 3 characters)",
+    "capacity": "integer, required (minimum 1)",
+    "vehicleType": "string, required (one of: car, motorcycle, auto)"
+  }
+}
+```
+
+### Responses
+
+#### Success (200)
+```json
+{
+  "token": "JWT token string",
+  "captain": { /* captain details */ }
+}
+```
+
+#### Validation Error (400)
+```json
+{
+  "errors": [
+    {
+      "msg": "Error message",
+      "param": "field name",
+      "location": "body"
+    }
+  ]
+}
+```
