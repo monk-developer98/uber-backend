@@ -167,3 +167,46 @@ Endpoint for captain registration. It accepts captain details and returns a JWT 
   ]
 }
 ```
+
+## /captain/profile Endpoint Documentation
+
+### Description
+Endpoint to retrieve the authenticated captain's profile details.
+
+### Request
+- **Method:** GET
+- **URL:** /captain/profile
+- **Content-Type:** application/json
+// No request body required
+
+### Response
+```json
+{
+  // captain: the authenticated captain's details
+  "captain": {
+    "id": "captain-id",
+    "fullname": { "firstname": "string", "lastname": "string" },
+    "email": "string",
+    "vehicle": { "color": "string", "plate": "string", "capacity": "integer", "vehicleType": "string" }
+  }
+}
+```
+
+## /captain/logout Endpoint Documentation
+
+### Description
+Endpoint for captain logout. It clears the authentication cookie and invalidates the token.
+
+### Request
+- **Method:** GET
+- **URL:** /captain/logout
+- **Content-Type:** application/json
+// No request body required
+
+### Response
+```json
+{
+  // message: confirmation message indicating logout success
+  "message": "Logout successfulyy"
+}
+```
